@@ -372,6 +372,11 @@ if(typeof umUtils == "undefined") {
     var UMNavH = 55;
   }
 
+  //init bpEvents automatically
+  jQuery(document).ready(function() {
+    umUtils.bpEvents();
+  });
+
 //warn in case of duplicate inclusion or name collision
 } else {
   console.warn("Cannot overwrite existing umUtils.  Did you include the file twice?");
