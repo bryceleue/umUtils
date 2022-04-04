@@ -27,7 +27,7 @@ if(typeof umUtils == "undefined") {
       //  private scrollsp(target, offset);
 
 
-      //  navHeight(headerid);
+      //  headerHeight(headerid);
       //  private storeHeight(headerid);
 
 
@@ -121,7 +121,7 @@ if(typeof umUtils == "undefined") {
     }
 
 
-    UMutils.navHeight = function(headerid) {
+    UMutils.headerHeight = function(headerid) {
       if(!$(headerid).length) return;
 
       storeHeight(headerid);
