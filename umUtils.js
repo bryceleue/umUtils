@@ -31,10 +31,6 @@ if(typeof umUtils == "undefined") {
       //  private storeHeight(headerid);
 
 
-      //  detectVis();
-      //  private detectvis();
-
-
       //  onVisible(func, params, remove);
 
 
