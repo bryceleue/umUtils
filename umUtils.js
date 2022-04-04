@@ -131,9 +131,9 @@ if(typeof umUtils == "undefined") {
     }
 
 
-    UMutils.onVisible = function(func, params, remove) {
+    UMutils.onVisible = function(func, params) {
       if(document.visibilitystate!=='visible') {
-        this.addEvtListener(document, 'visibilitychange', func, params, remove);
+        this.addEvtListener(document, 'visibilitychange', func, params, true);
       }
     }
 
@@ -158,7 +158,7 @@ if(typeof umUtils == "undefined") {
         assignHeights(selectors, breakpoints);
       });
 
-      this.onVisible(assignHeights, [selectors, breakpoints], true);
+      this.onVisible(assignHeights, [selectors, breakpoints]);
 
       if(document.visibilityState === "visible") {
         assignHeights(selectors, breakpoints);
