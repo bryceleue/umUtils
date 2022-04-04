@@ -74,10 +74,6 @@ if(typeof umUtils == "undefined") {
     //funcs:{},
     UMutils.addEvtListener = function(element, evt, func, params, remove) {
 
-      if(typeof remove == 'undefined' || typeof(remove) !== "boolean") remove = false;
-        params = (typeof params == 'undefined' || !Array.isArray(params) && typeof params != "string") ?
-          null : Array.isArray(params) ? params : [params];
-
         var funcname = (func.name == "" ? 'umAnonFunc' : func.name)+this.anonCounter;
         this.anonCounter++;
 
@@ -87,6 +83,10 @@ if(typeof umUtils == "undefined") {
     }
 
     function buildFunc(element, evt, func, funcname, params, remove) {
+      if(typeof remove == 'undefined' || typeof(remove) !== "boolean") remove = false;
+        params = (typeof params == 'undefined' || !Array.isArray(params) && typeof params != "string") ?
+          null : Array.isArray(params) ? params : [params];
+
       return remove ? function() {
         func.apply(null, params);
         element.removeEventListener(evt, UMutils.funcs[funcname]);
@@ -135,17 +135,10 @@ if(typeof umUtils == "undefined") {
     }
 
 
-    UMutils.detectVis = function() {
-      return detectvis();
-    }
-
-    function detectvis() {
-      return document.hidden ? false : true;
-    }
-
-
     UMutils.onVisible = function(func, params, remove) {
-      this.addEvtListener(document, 'visibilitychange', func, params, remove);
+      if(document.visibilitystate!=='visible') {
+        this.addEvtListener(document, 'visibilitychange', func, params, remove);
+      }
     }
 
 
@@ -169,9 +162,9 @@ if(typeof umUtils == "undefined") {
         assignHeights(selectors, breakpoints);
       });
 
-      if(!detectvis()) {
-        this.onVisible(assignHeights, [selectors, breakpoints], true);
-      } else {
+      this.onVisible(assignHeights, [selectors, breakpoints], true);
+
+      if(document.visibilityState === "visible") {
         assignHeights(selectors, breakpoints);
       }
 
