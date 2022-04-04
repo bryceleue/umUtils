@@ -8,12 +8,13 @@ If you are unfamiliar with [bootScore](https://bootscore.me/), you should check 
 ## What is umUtils?
 Basically, it is a collection of shortcuts that I thought would be useful for rolling out projects with the above tools.
 
-**What umUtils can do right now** 
+**What umUtils can help you do right now** 
 * Normalize the heights of a group of items
 * Dynamically store the height of bootScore's header
 * Provide events that fire when the window is resizing and when it has stopped
 * A wrapper for addEventListener that allows use of anonymous functions and removeEventListener
 * Conveniently target scrollSpy elements
+* Call a function when a page is first made visible
 * Trigger the click event on multiple elements with one click
 * Use a Bootstrap button group with a Bootstrap carousel more easily
 
@@ -36,7 +37,7 @@ wp_enqueue_script('umUtils-js', get_stylesheet_directory_uri() . '/js/vendor/umU
 ## How to do stuff
 
 
-**umUtils.addEvtListener**
+### umUtils.addEvtListener
 ```javascript
 //dynamically create anonymous functions and pass to addEvtListener and optionally remove after event fires
 function somefunction(func, params, remove) {
@@ -47,7 +48,7 @@ somefunction(mytargetelem, function() { dosomethinghere... }, [param1, param2], 
 ```
 
 
-**umUtils.navHeight**
+### umUtils.navHeight
 ```javascript
 //pass id of header to dynamically track header height.  access height with global UMNavH
 umUtils.headerHeight('#headerid'); 
@@ -72,28 +73,65 @@ $('html, body').animate({ scrollTop: target.offset().top - UMNavH }, 1000);
 ```
 
 
-**umUtils.onVisible**
+### umUtils.onVisible
 ```javascript
 //Call a function once when the page becomes visible.  Only fires if the page is hidden or in prerender.
-
+umUtils.onVisible(function() { do something...}, [param1, param2], true);
+umUtils.onVisible(function() { do something...}, false, true);
+umUtils.onVisible({ do something...});
 ```
 
-**umUtils.uniHeight**
+### umUtils.uniHeight
 ```javascript
 //Normalize the heights of multiple elements by making them all as tall as the tallest element.
-
+umUtils.uniHeight("#wrapperid .carousel-inner", ".carousel-item", true);
+umUtils.uniHeight(".wrapperclass", ".card", true, ['lg', 'xl', 'xxl']);
 ```
 
-**umUtils.triggerClick**
+### umUtils.triggerClick
 ```javascript
-//Trigger the click event on multiple targets
-
+//Trigger the click event a second element
+umUtils.triggerClick(); //only call once
+```
+```html
+<!-- target  elements as you want like this: -->
+<button data-umethod-targetClick="someid">Button</button>
 ```
 
-**Using in your theme's custom.js**
+### umUtils.carouselNavActive
 ```javascript
-  $(document).ready(function() {
-    umUtils.uniHeight(".wrapperclass", ".card", true, ['lg', 'xl', 'xxl']); 
+//pass id of a Bootstrap button group
+umUtils.carouselNavActive(buttongroupid);
+```
+Target the carousel with your button group the same way Bootstrap recommends you do it with indicators
+```html
+<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+<div id="buttongroupid" class="btn-group" role="group" aria-label="Basic example">
+  <button type="button" class="btn btn-primary" data-bs-target="#carouselid" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1">Left</button>
+  <button type="button" class="btn btn-primary" data-bs-target="#carouselid" data-bs-slide-to="1" aria-label="Slide 2">Middle</button>
+</div>
+```
+
+
+### umUtils.scrollspy
+```javascript
+//activate scrollspy for page by id and target specific element
+//place page id's and corresponding section ids you want to activate it for in the pages array
+umUtils.scrollspy(
+  scrollspypages({
+    [5: '#bootscore-navbar'],
+    [6: '#bootscore-navbar'],
+    [23: '#someother-navbar']
+  })
+);
+
+
+```
+Scrollspy does not currently support targeting more than one specific element per page.  Believe me, I tried already!  scrollSpy can either watch the entire window or a single specified target.  However, umUtils.scrollspy does offer a convenient approach for different configurations for multiple pages.
+
+### Using in your theme's custom.js
+```javascript
+  $(document).ready(function() { 
     umUtils.uniHeight("#wrapperid .carousel-inner", ".carousel-item", true); 
     umUtils.navHeight("#headerid");
     umUtils.scrollspy(scrollspypages({[5: '#bootscore-navbar']}));
@@ -102,12 +140,19 @@ $('html, body').animate({ scrollTop: target.offset().top - UMNavH }, 1000);
   });
 ```
 
+### umUtils Events
+You may currently use the events `umBeforeResize` and `umAfterResize` to suit your needs.
+```javascript
+window.addEventListener("umAfterResize", function() {
+  do stuff...
+});
+```
+umUtils only begins detecting "resizing" and fires umBeforeResize when a breakpoint is passed to limit overhead.  umAfterResize fires when the viewport has not changed in size for 800ms.
 
 
 
-
-### Breakpoints
+## Breakpoints
 As mentioned above, umUtils uses [breakpoints-js](https://github.com/thecreation/breakpoints-js).  The default breakpoints in breakpoints-js have been modified to be consistent with [Bootstrap 5's breakpoints](https://getbootstrap.com/docs/5.1/layout/breakpoints/)
 
-### License
+## License
 umUtils, [GPLv3](LICENSE)
