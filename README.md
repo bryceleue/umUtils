@@ -12,7 +12,7 @@ Basically, it is a collection of shortcuts that I thought would be useful for ro
 * Normalize the heights of a group of items
 * Dynamically store the height of bootScore's header
 * Provide events that fire when the window is resizing and when it has stopped
-* A wrapper for addEventListener that allows use of anonymous functions and removeEventListener
+* A wrapper for addEventListener that conveniently allows use of anonymous functions with removeEventListener
 * Conveniently target scrollSpy elements
 * Call a function when a page is first made visible
 * Trigger the click event on multiple elements with one click
@@ -120,10 +120,12 @@ Target the carousel with your button group the same way Bootstrap recommends you
 umUtils.scrollspy(
   scrollspypages({
     [5: '#bootscore-navbar'],
-    [6: '#bootscore-navbar'],
-    [23: '#someother-navbar']
+    [23: '#bootscore-navbar'],
+    //pass 0 when you want to enable for the home page that is a blog
+    [0: '#bootscore-navbar']      
   })
 );
+ 
 
 
 ```
