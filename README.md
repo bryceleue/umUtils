@@ -121,7 +121,7 @@ umUtils.scrollspy(
   scrollspypages({
     [5: '#bootscore-navbar'],
     [23: '#bootscore-navbar'],
-    //pass 0 when you want to enable for the home page
+    //pass 0 when you want to enable for the home page that is a blog
     [0: '#someother-navbar']      
   })
 );
