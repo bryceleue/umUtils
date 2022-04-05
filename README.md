@@ -120,10 +120,12 @@ Target the carousel with your button group the same way Bootstrap recommends you
 umUtils.scrollspy(
   scrollspypages({
     [5: '#bootscore-navbar'],
-    [6: '#bootscore-navbar'],
-    [23: '#someother-navbar']
+    [23: '#bootscore-navbar'],
+    //pass 0 when you want to enable for the home page
+    [0: '#someother-navbar']      
   })
 );
+ 
 
 
 ```
