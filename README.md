@@ -44,7 +44,7 @@ function somefunction(func, params, remove) {
   umUtils.addEvtListener(document, 'visibilitychange', func, params, remove);
 }
 
-somefunction(mytargetelem, function() { dosomethinghere... }, [param1, param2], true);
+somefunction(mytargetelem, function() { //dosomethinghere... }, [param1, param2], true);
 ```
 
 
@@ -76,9 +76,9 @@ $('html, body').animate({ scrollTop: target.offset().top - UMNavH }, 1000);
 ### umUtils.onVisible
 ```javascript
 //Call a function once when the page becomes visible.  Only fires if the page is hidden or in prerender.
-umUtils.onVisible(function() { do something...}, [param1, param2], true);
-umUtils.onVisible(function() { do something...}, false, true);
-umUtils.onVisible({ do something...});
+umUtils.onVisible(function() { //do something...}, [param1, param2], true);
+umUtils.onVisible(function() { //do something...}, false, true);
+umUtils.onVisible({ //do something...});
 ```
 
 ### umUtils.uniHeight
@@ -146,7 +146,7 @@ Scrollspy does not currently support targeting more than one specific element pe
 You may currently use the events `umBeforeResize` and `umAfterResize` to suit your needs.
 ```javascript
 window.addEventListener("umAfterResize", function() {
-  do stuff...
+  //do stuff...
 });
 ```
 umUtils only begins detecting "resizing" and fires umBeforeResize when a breakpoint is passed to limit overhead.  umAfterResize fires when the viewport has not changed in size for 800ms.
