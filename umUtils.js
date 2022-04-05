@@ -97,7 +97,7 @@ if(typeof umUtils == "undefined") {
       if(pages.length) {
         pages.forEach(function(page) {
           for(const [id, section] of Object.entries(page)) {
-            if($(".page-id-"+id).length) {
+            if($(".page-id-"+id).length || (id == 0 && $(".home").length)) {
               scrollSpy = scrollsp(section, UMNavH + 1);
               pageidentified = true;
               break;
