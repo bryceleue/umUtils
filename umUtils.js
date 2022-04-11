@@ -25,6 +25,7 @@ if(typeof umUtils == "undefined") {
 
       //  scrollspy(pages);
       //  private scrollsp(target, offset);
+      //  private truncateLinks(target);
 
 
       //  headerHeight(headerid);
@@ -98,6 +99,7 @@ if(typeof umUtils == "undefined") {
         pages.forEach(function(page) {
           for(const [id, section] of Object.entries(page)) {
             if($(".page-id-"+id).length || (id == 0 && $(".home").length)) {
+              truncateLinks(section);
               scrollSpy = scrollsp(section, UMNavH + 1);
               pageidentified = true;
               break;
@@ -114,6 +116,17 @@ if(typeof umUtils == "undefined") {
         offset: offset
       });
       return scrollSpy;
+    }
+
+    function truncateLinks(target) {
+      var links = document.querySelectorAll(target+" a");
+      links.forEach(function(link){
+        var href = link.getAttribute("href");
+        href = href.substring(
+          href.indexOf('#')
+        );
+        link.setAttribute("href", href);
+      });
     }
 
 
