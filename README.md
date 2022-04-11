@@ -14,11 +14,12 @@ Basically, it is a collection of shortcuts that I thought would be useful for ro
 * Provide events that fire when the window is resizing and when it has stopped
 * A wrapper for addEventListener that conveniently allows use of anonymous functions with removeEventListener
 * Conveniently target scrollSpy elements
+* Eliminate the need for multiple menus/menu switching for multipagers with one pagers
 * Call a function when a page is first made visible
 * Trigger the click event on multiple elements with one click
 * Use a Bootstrap button group with a Bootstrap carousel more easily
 
-A lot of responsive design approaches focus on targeting an array of viewports without considering that the view port change changes size/dimensions if it is resized after it loads.  One of the objectives of umUtils is to help address awkward behavior after resizing. 
+A lot of responsive design approaches focus on targeting an array of viewports without considering that the view port changes size/dimensions if it is resized after it loads.  One of the objectives of umUtils is to help address awkward behavior after resizing. 
 
 ## Getting Started
 If you haven't gotten started with setting up your [bootScore](https://bootscore.me/) theme with a WordPress installation [start here first!](https://bootscore.me/documentation/installation/)
@@ -117,6 +118,7 @@ Target the carousel with your button group the same way Bootstrap recommends you
 ```javascript
 //activate scrollspy for page by id and target specific element
 //place page id's and corresponding section ids you want to activate it for in the pages array
+//activated pages will automatically modify full urls to be anchors (https://fullhomeurl.com/#anchor to #anchor) - no need to use multiple menus
 umUtils.scrollspy(
   scrollspypages({
     [5: '#bootscore-navbar'],
