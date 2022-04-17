@@ -352,7 +352,7 @@ if(typeof umUtils == "undefined") {
 
 
     UMutils.checkBP = function(breakpoints) {
-      checkbp(breakpoints);
+      return checkbp(breakpoints);
     }
 
 
