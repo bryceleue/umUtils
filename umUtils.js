@@ -163,6 +163,13 @@ if(typeof umUtils == "undefined") {
       var selectors = parent+' '+child;
       if(!$(parent).length) return;
 
+      addHeightEvents(selectors, breakpoints);
+
+      setHeightsWhenVisible(assignHeights, selectors, breakpoints);
+
+    }
+
+    function addHeightEvents(selectors, breakpoints) {
       window.addEventListener("umBeforeResize", function() {
         clearHeights(selectors);
         enableTransition(selectors);
@@ -170,13 +177,14 @@ if(typeof umUtils == "undefined") {
       window.addEventListener("umAfterResize", function() {
         assignHeights(selectors, breakpoints);
       });
+    }
 
-      this.onVisible(assignHeights, [selectors, breakpoints]);
+    function setHeightsWhenVisible(assignHeights, selectors, breakpoints) {
+      UMutils.onVisible(assignHeights, [selectors, breakpoints]);
 
       if(document.visibilityState === "visible") {
         assignHeights(selectors, breakpoints);
       }
-
     }
 
     function enableTransition(selectors) {
