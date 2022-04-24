@@ -26,7 +26,7 @@ If you haven't gotten started with setting up your [bootScore](https://bootscore
 
 **It is also recommended that you [use the bootScore child theme](https://bootscore.me/documentation/using-the-child-themes/).**
 
-The first thing you need to do to use umUtils is [download it](archive/refs/heads/main.zip) and include the necessary files in your bootScore child theme.  It is recommended that you you place the files in the `bootscore-child-main/js/vendor` folder.  Don't forget to include breakpoints-js first!
+The first thing you need to do to use umUtils is [download the latest release](releases) and include the necessary files in your bootScore child theme.  It is recommended that you you place the files in the `bootscore-child-main/js/vendor` folder.  Don't forget to include breakpoints-js first!
 
 Next you need to include the files in your bootscore child theme's functions.php file like below (enqueue before custom.js):
 ```php
