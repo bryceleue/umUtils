@@ -161,7 +161,7 @@ window.addEventListener("umAfterResize", function() {
   //do stuff...
 });
 ```
-umUtils only begins detecting "resizing" and fires umBeforeResize when a breakpoint is passed to limit overhead.  umAfterResize fires when the viewport has not changed in size for 800ms.
+umUtils only begins detecting "resizing" and fires umBeforeResize when a breakpoint is passed to limit overhead.  umAfterResize fires when the viewport has not changed in size for 800ms.  I have read crticisms on approaches that utilize polling in scenarios like these, but I don't think polling is always bad. There is a cost to polling, sure, but the cost of a bunch of different callbacks attached to an onresize event or similar is much worse.  If your objective is to approach resizing elements on a page on an individual basis AS the page is resizing in realtime, using something like [ResizeObserver](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver) is probably the way to go.  If you are fine with callbacks firing before or after resizing, these events will suit your needs just fine.
 
 
 
