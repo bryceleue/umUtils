@@ -47,6 +47,15 @@ if(typeof umUtils == "undefined") {
       //  triggerClick();
 
 
+      //  storeScroll();
+
+
+      //  getScrollPosition();
+
+
+      //  getHeaderHeight();
+
+
       //  carouselNavActive(navid);
       //  private setcnaClass(navElms, index);
 
@@ -250,6 +259,23 @@ if(typeof umUtils == "undefined") {
     }
 
 
+    UMutils.storeScroll = function() {
+      document.addEventListener('scroll', function(){
+        document.documentElement.dataset.scrollpos = window.scrollY;
+      });
+    }
+
+
+    UMutils.getScrollPosition = function() {
+      return document.documentElement.getAttribute("data-scrollpos");
+    }
+
+
+    UMutils.getHeaderHeight = function() {
+      return UMNavH;
+    }
+
+
     UMutils.carouselNavActive = function(navid) {
       var navElms =  document.querySelectorAll("#"+navid+" .btn");
       if(!navElms.length) return;
@@ -382,9 +408,11 @@ if(typeof umUtils == "undefined") {
     var UMNavH = 55;
   }
 
-  //init bpEvents automatically
+  //init functions
   jQuery(document).ready(function() {
-    umUtils.bpEvents();
+
+    UMutils.bpEvents();
+    
   });
 
 //warn in case of duplicate inclusion or name collision
