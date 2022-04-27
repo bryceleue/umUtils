@@ -390,6 +390,11 @@ if(typeof umUtils == "undefined") {
     }
 
 
+    UMutils.init = function() {
+      UMutils.bpEvents();
+    }
+
+
     //polyfills (bootScore doesn't support explorer, so we should probably reconsider whether we actually need any of these)
     Array.prototype.forEach||(Array.prototype.forEach=function(r,o){if("function"!=typeof r)throw new TypeError(r+" is not a function");var t=this;o=o||this;for(var n=0,a=t.length;n!==a;++n)r.call(o,t[n],n,t)});
     Object.entries||(Object.entries=function(e){for(var r=Object.keys(e),t=r.length,n=new Array(t);t--;)n[t]=[r[t],e[r[t]]];return n});
@@ -410,9 +415,7 @@ if(typeof umUtils == "undefined") {
 
   //init functions
   jQuery(document).ready(function() {
-
-    UMutils.bpEvents();
-    
+    umUtils.init();
   });
 
 //warn in case of duplicate inclusion or name collision
