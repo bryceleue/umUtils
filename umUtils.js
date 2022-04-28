@@ -47,7 +47,13 @@ if(typeof umUtils == "undefined") {
       //  triggerClick();
 
 
+      //  private injectStorageElem();
+
+
       //  storeScroll();
+
+
+      //  storeHeaderHeight();
 
 
       //  getScrollPosition();
@@ -259,10 +265,22 @@ if(typeof umUtils == "undefined") {
     }
 
 
+    function injectStorageElem() {
+      document.body.insertAdjacentHTML("beforebegin",
+        "<div id='umUtilsData'></div>"
+      );
+    }
+
+
     UMutils.storeScroll = function() {
       document.addEventListener('scroll', function(){
-        document.documentElement.dataset.scrollpos = window.scrollY;
+        document.getElementById("umUtilsData").dataset.scrollpos = window.scrollY;
       });
+    }
+
+
+    UMutils.storeHeaderHeight = function() {
+      document.getElementById("umUtilsData").dataset.headerHeight = this.getHeaderHeight();
     }
 
 
@@ -391,6 +409,7 @@ if(typeof umUtils == "undefined") {
 
 
     UMutils.init = function() {
+      injectStorageElem();
       UMutils.bpEvents();
     }
 
