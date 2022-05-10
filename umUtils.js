@@ -271,7 +271,7 @@ if(typeof umUtils == "undefined") {
       storescroll();
     }
     function storescroll() {
-      document.documentElement.style.setProperty('--um--bs--scrollpos', window.scrollY);
+      document.documentElement.dataset.umscrollpos = window.scrollY;
     }
 
 
@@ -279,12 +279,12 @@ if(typeof umUtils == "undefined") {
       storeheaderheight();
     }
     function storeheaderheight() {
-      document.documentElement.style.setProperty('--um--bs--headerheight', this.getHeaderHeight());
+      document.documentElement.dataset.umheaderheight = this.getHeaderHeight();
     }
 
 
     UMutils.getScrollPosition = function() {
-      return getComputedStyle(document.documentElement).getPropertyValue('--um--bs--scrollpos');
+      return document.documentElement.dataset.umscrollpos;
     }
 
 
