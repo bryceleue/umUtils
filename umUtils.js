@@ -30,6 +30,7 @@ if(typeof umUtils == "undefined") {
 
       //  headerHeight(headerid);
       //  private storeHeight(headerid);
+      //  storeheaderheight();
 
 
       //  onVisible(func, params, remove);
@@ -49,10 +50,6 @@ if(typeof umUtils == "undefined") {
 
       //  storeScroll();
       //  private storescroll();
-
-
-      //  storeHeaderHeight();
-      //  private storeheaderheight();
 
 
       //  getScrollPosition();
@@ -148,13 +145,19 @@ if(typeof umUtils == "undefined") {
       if(!$(headerid).length) return;
 
       storeHeight(headerid);
+      storeheaderheight();
       window.addEventListener("umAfterResize", function() {
         storeHeight(headerid);
+        storeheaderheight();
       });
     }
 
     function storeHeight(headerid) {
       UMNavH=$(headerid).height();
+    }
+
+    function storeheaderheight() {
+      document.documentElement.style.setProperty('--um--headerheight', umUtils.getHeaderHeight()+"px");
     }
 
 
@@ -272,14 +275,6 @@ if(typeof umUtils == "undefined") {
     }
     function storescroll() {
       document.documentElement.dataset.umscrollpos = window.scrollY;
-    }
-
-
-    UMutils.storeHeaderHeight = function() {
-      storeheaderheight();
-    }
-    function storeheaderheight() {
-      document.documentElement.dataset.umheaderheight = this.getHeaderHeight();
     }
 
 
