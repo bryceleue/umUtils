@@ -47,9 +47,6 @@ if(typeof umUtils == "undefined") {
       //  triggerClick();
 
 
-      //  private injectStorageElem();
-
-
       //  storeScroll();
       //  private storescroll();
 
