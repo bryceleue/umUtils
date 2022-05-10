@@ -271,7 +271,7 @@ if(typeof umUtils == "undefined") {
       storescroll();
     }
     function storescroll() {
-      document.documentElement.style.setProperty('--scrollpos', window.scrollY);
+      document.documentElement.style.setProperty('--um--bs--scrollpos', window.scrollY);
     }
 
 
@@ -279,12 +279,12 @@ if(typeof umUtils == "undefined") {
       storeheaderheight();
     }
     function storeheaderheight() {
-      document.documentElement.style.setProperty('--headerheight', this.getHeaderHeight());
+      document.documentElement.style.setProperty('--um--bs--headerheight', this.getHeaderHeight());
     }
 
 
     UMutils.getScrollPosition = function() {
-      return getComputedStyle(document.documentElement).getPropertyValue('--scrollpos');
+      return getComputedStyle(document.documentElement).getPropertyValue('--um--bs--scrollpos');
     }
 
 
