@@ -137,6 +137,7 @@ if(typeof umUtils == "undefined") {
           href.indexOf('#')
         );
         link.setAttribute("href", href);
+        link.classList.toggle("active");
       });
     }
 
